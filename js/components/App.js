@@ -34,8 +34,23 @@ export default  {
             </ul>
         </section>
     `,
+
+    data() {
+        return {
+            assignments: [
+                {name: 'Finish project', complete: false, id:1},
+                {name: 'Read chapter', complete: false, id:2},
+                {name: 'Turn in homework', complete: false, id:3},
+            ]
+        }
+    },
     
-    components: {
-        'app-button': AppButton,
+    computed: {
+        inProggressAssignments() {
+            return this.assignments.filter(a => !a.complete)
+        },
+        completedAssignments() {
+            return this.assignments.filter(a => a.complete)
+        }
     },
 };
