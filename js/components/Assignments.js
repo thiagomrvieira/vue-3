@@ -7,27 +7,39 @@ export default {
         AssignmentList, AssignmentCreate
     },
     template: `
-        <section class="space-y-6">
+        <section class="flex gap-8">
             <assignment-list 
                 title="In progress" 
                 :assignments='filters.inProgress'
             >
+
+                <assignment-create @add="add"></assignment-create>
+
             </assignment-list>
 
-            <assignment-list 
-                title="Completed" 
-                :assignments='filters.completed'
-            >
-            </assignment-list>
+            <div v-show="showCompleted">
+
+                <assignment-list 
+                    
+                    title="Completed" 
+                    :assignments='filters.completed'
+                    can-toggle
+                    @toggle="showCompleted = !showCompleted"
+                >
+                </assignment-list>
+
+            </div>
+            
+
         </section>
 
-        <assignment-create @add="add"></assignment-create>
         
     `,
 
     data() {
         return {
             assignments: [],
+            showCompleted: true,
         }
     },
     
