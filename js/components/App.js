@@ -1,13 +1,20 @@
 import AppButton from "./AppButton.js"; 
 import Assignments from "./Assignments.js";
+import Panel from "./Panel.js";
 
 export default  {
     components: {
-        Assignments,
+        Assignments, Panel
     },
 
     template: `
-        <Assignments></Assignments>
+        <div class="grid gap-6"> 
+            
+            <Assignments></Assignments>
+
+           
+
+        </div>
     `,
 
    
